@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import * as Highcharts from 'highcharts'
-import { ExType, SlopeIntercept } from 'src/app/functions/slope-intercept';
+import { ExType, getSiAsString, SlopeIntercept } from 'src/app/functions/slope-intercept';
 
 @Component({
   selector: 'app-CartesianGraph',
@@ -13,23 +13,26 @@ export class CartesianGraphComponent implements OnInit {
     [2, 2],
     [100, 100],
   ]
-  _si: SlopeIntercept = {m:0,b:0};
+  _si: SlopeIntercept = {m:0,b:0,rise:0,run:0};
+  _title = '';
   get dataset(): any {
     return this._dataset
   }
   get si(): any {
     return this._si
   }
-  @Input() set dataset(d: { p: any; a: any, si: SlopeIntercept, type:ExType }) {
-    console.log('d: ', d)
-    this.setDs(d.p, d.a, d.si).then((ds: any) => {
+  get title(): any {
+    return this._title
+  }
+  @Input() set dataset(d: { p: any; a: any, si: SlopeIntercept, type:ExType, title:string }) {
+    this.setDs(d.p, d.a, d.si, d.title).then((ds: any) => {
       this._dataset = ds
       this.setChartOptions(d.type)
-      console.log('ds = ', this._dataset)
     })
   }
 
-  setDs(p: any, a: any, si: any): Promise<any> {
+  setDs(p: any, a: any, si: any, title: string): Promise<any> {
+    this._title = title;
     this._si = si;
     let ds: any = []
     return new Promise((resolve) => {
@@ -81,15 +84,14 @@ export class CartesianGraphComponent implements OnInit {
   }
 
   setChartOptions(type: ExType = ExType.e ) {
+
     this.chartOptions = {}
     this.chartOptions = {
       legend:{ enabled:false },
       title: {
-        text: type === ExType.e ? 'y = '+this.si.m+'x + '+this.si.b :
-              type === ExType.ge ? 'y ≥ '+this.si.m+'x + '+this.si.b :
-              type === ExType.le ? 'y ≤ '+this.si.m+'x + '+this.si.b :
-              type === ExType.g ? 'y > '+this.si.m+'x + '+this.si.b :
-              type === ExType.l ? 'y < '+this.si.m+'x + '+this.si.b : '',
+        text: this._title.length < 1 ?
+        getSiAsString(this._si, type) :
+        'Graph',
       },
       xAxis: {
         type: 'linear',

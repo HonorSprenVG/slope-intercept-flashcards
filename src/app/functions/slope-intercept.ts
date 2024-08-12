@@ -1,4 +1,4 @@
-export interface SlopeIntercept {b: number, m: number};
+export interface SlopeIntercept {b: number, m: number, rise: number, run: number};
 export interface XYPoint {x: number, y: number};
 export enum ExType {'e','ge','le','g','l'};
 
@@ -36,12 +36,35 @@ export function solveForY(x: number, si: SlopeIntercept) {
  return y;
 }
 
-export function generateRandomLine(){
-  let si = {
-    b: randNegNToN(5),
-    m:randNegNToN(4),
+export function generateRandomLine(): SlopeIntercept{
+  let run = randNegNToN(4);
+  if(run==0){run = run + getSign()}
+  let rise = randNegNToN(randNegNToN(Math.abs(run)-1));
+  if(rise==0){
+    if(Math.abs(randNegNToN(100)) < 99){
+      let ri = rise + getSign()
+      return {
+        b: randNegNToN(5),
+        m: ri/run,
+        rise: ri,
+        run: run
+      }
+    } else {
+      return {
+        b: randNegNToN(5),
+        m: rise/run,
+        rise: rise,
+        run: run
+      }
+    }
+  }else {
+    return {
+      b: randNegNToN(5),
+      m: rise/run,
+      rise: rise,
+      run: run
+    }
   }
-  return si;
 }
 
 export function generatePointOnTheLine(si:SlopeIntercept, check1?: XYPoint | undefined, check2?: XYPoint | undefined) {
@@ -82,4 +105,36 @@ export function getSign() {
   } else {
     return -1;
   }
+}
+
+export function getSiAsString(si:SlopeIntercept, type: ExType){
+  let m;
+  let intCheck = Number.isInteger(si.m)
+  if(intCheck){
+    m = si.m
+  }else{
+    let rise = si.rise;
+    let run = si.run;
+    if(rise < 0 || run < 0) {
+      if(rise < 0 && run < 0){
+        m = Math.abs(si.rise) + '/' + Math.abs(si.run);
+      } else {
+        m = '-'+ Math.abs(si.rise) + '/' + Math.abs(si.run);
+      }
+    } else {
+      m = si.rise + '/' + si.run
+    }
+  };
+  let bSign = '+'
+  if(si.b < 0) {
+    bSign = '-'
+  }
+  let b = Math.abs(si.b)
+  let mxplusb = m+'x '+bSign+' '+b
+return type === ExType.e ? 'y = '+mxplusb :
+  type === ExType.ge ? 'y ≥ '+mxplusb :
+  type === ExType.le ? 'y ≤ '+mxplusb :
+  type === ExType.g ? 'y > '+mxplusb :
+  type === ExType.l ? 'y < '+mxplusb : ''
+
 }
