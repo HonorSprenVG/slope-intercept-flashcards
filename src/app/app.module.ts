@@ -4,13 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+import {HighchartsChartModule} from 'highcharts-angular'
+import { CartesianGraphComponent } from './components/CartesianGraph/CartesianGraph.component';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CartesianGraphComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HighchartsChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
