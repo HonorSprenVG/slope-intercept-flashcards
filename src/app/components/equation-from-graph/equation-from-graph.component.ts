@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { generateRandomLine, XYPoint, solveForY, getExType, generatePointOnTheLine, ExType } from 'src/app/functions/slope-intercept';
+import { generateRandomLine, XYPoint, solveForY, getExType, generatePointOnTheLine, ExType, getSiAsString } from 'src/app/functions/slope-intercept';
 
 @Component({
   selector: 'app-equation-from-graph',
@@ -9,6 +9,7 @@ import { generateRandomLine, XYPoint, solveForY, getExType, generatePointOnTheLi
 export class EquationFromGraphComponent {
   title = 'Which equation does the following graph show the partial solution set for?'
   slopeIntercept = generateRandomLine();
+  dispFn = getSiAsString;
   threePoints: {
     point1: XYPoint | undefined
     point2: XYPoint | undefined

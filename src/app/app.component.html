@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   y = {{slopeIntercept.m}}x + {{slopeIntercept.b}}
 </div>
 <pre>
@@ -6,5 +6,18 @@
   {{threePoints.point2 | json}}
   {{threePoints.point3 | json}}
 </pre>
-<app-CartesianGraph [dataset]="{p:threePoints,a:chartAnchors,si:slopeIntercept,type:exType,title:''}"></app-CartesianGraph>
-<app-equation-from-graph></app-equation-from-graph>
+<app-CartesianGraph [dataset]="{p:threePoints,a:chartAnchors,si:slopeIntercept,type:exType,title:''}"></app-CartesianGraph> -->
+<p-tabView>
+  <p-tabPanel header="Question">
+    <p-button label="New Question" (onClick)="newQuestion()" />
+    <ng-container *ngIf="ready">
+      <app-equation-from-graph></app-equation-from-graph>
+    </ng-container>
+  </p-tabPanel>
+  <p-tabPanel header="Cheet Sheet">
+    <p>
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+      accusantium...
+    </p>
+  </p-tabPanel>
+</p-tabView>

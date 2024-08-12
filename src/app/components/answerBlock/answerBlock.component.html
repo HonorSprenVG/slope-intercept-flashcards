@@ -1,3 +1,17 @@
-<p>
-  answerBlock works!
-</p>
+<p [ngStyle]="{ color: this.color }">{{ answerMessage }}</p>
+<div class="card flex justify-content-center">
+  <div class="flex flex-column gap-3">
+    <div *ngFor="let answer of answers; index as i" class="field-checkbox">
+      <p-radioButton
+        [inputId]="i.toString()"
+        name="category"
+        [value]="answer.answer"
+        [(ngModel)]="selectedAnswer"
+        (onClick)="checkAnswer($event)"
+      />
+      <label [for]="i.toString()" class="ml-2">
+        {{ answer.display }}
+      </label>
+    </div>
+  </div>
+</div>

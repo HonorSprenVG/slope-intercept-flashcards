@@ -24,11 +24,28 @@ export class AppComponent {
     point2: undefined,
     point3: undefined,
   }
-  chartAnchors = {high:{x:100, y:(solveForY(100, this.slopeIntercept))}, low:{x:-100, y:solveForY(-100, this.slopeIntercept)}}
-  exType = getExType();
+  chartAnchors = {
+    high: { x: 100, y: solveForY(100, this.slopeIntercept) },
+    low: { x: -100, y: solveForY(-100, this.slopeIntercept) },
+  }
+  exType = getExType()
   constructor() {
     this.threePoints.point1 = generatePointOnTheLine(this.slopeIntercept)
-    this.threePoints.point2 = generatePointOnTheLine(this.slopeIntercept, this.threePoints.point1)
-    this.threePoints.point3 = generatePointOnTheLine(this.slopeIntercept, this.threePoints.point1, this.threePoints.point2)
+    this.threePoints.point2 = generatePointOnTheLine(
+      this.slopeIntercept,
+      this.threePoints.point1,
+    )
+    this.threePoints.point3 = generatePointOnTheLine(
+      this.slopeIntercept,
+      this.threePoints.point1,
+      this.threePoints.point2,
+    )
+  }
+  ready = true
+  newQuestion() {
+    this.ready = false
+    setTimeout(() => {
+      this.ready = true
+    }, 100)
   }
 }

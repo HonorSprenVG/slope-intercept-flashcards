@@ -1,5 +1,18 @@
-
-<app-CartesianGraph [dataset]="{p:threePoints,a:chartAnchors,si:slopeIntercept,type:exType,title:title}"></app-CartesianGraph>
-<div>
-  <app-answerBlock [si]="{si:slopeIntercept, t:exType, qType:1}"></app-answerBlock>
+<div class="row">
+  <div class="chart-column">
+    <app-CartesianGraph
+      [dataset]="{
+        p: threePoints,
+        a: chartAnchors,
+        si: slopeIntercept,
+        type: exType,
+        title: title
+      }"
+    ></app-CartesianGraph>
+  </div>
+  <div class="column" style="margin-top:100px">
+    <app-answerBlock
+      [si]="{ si: slopeIntercept, t: exType, dispFn: dispFn }"
+    ></app-answerBlock>
+  </div>
 </div>

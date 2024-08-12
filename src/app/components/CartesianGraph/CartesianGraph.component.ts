@@ -569,14 +569,14 @@ export class CartesianGraphComponent implements OnInit {
           },
           enableMouseTracking: false,
         },
-        {
-          type: 'scatter',
-          name: 'Observations',
-          data: this.dataset,
-          marker: {
-            radius: 4,
-          },
-        },
+        // {
+        //   type: 'scatter',
+        //   name: 'Observations',
+        //   data: this.dataset,
+        //   marker: {
+        //     radius: 4,
+        //   },
+        // },
       ],
     }
   }
