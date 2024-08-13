@@ -13,10 +13,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-    - name: Building and Deploying...
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1
-      with:
-        build_configuration: production
-        base_href: /slope-intercept-flashcards/
-        deploy_branch: gh-pages
-        angular_dist_build_folder: dist/slope-intercept-flashcards
+      - name: Building and Deploying...
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1
+        with:
+          build_configuration: production
+          base_href: /slope-intercept-flashcards/
+          deploy_branch: gh-pages
+          angular_dist_build_folder: dist/slope-intercept-flashcards
