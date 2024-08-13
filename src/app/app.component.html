@@ -11,7 +11,12 @@
   <p-tabPanel header="Question">
     <p-button label="New Question" (onClick)="newQuestion()" />
     <ng-container *ngIf="ready">
-      <app-equation-from-graph></app-equation-from-graph>
+      <ng-container *ngIf="qType === 1">
+        <app-equation-from-graph></app-equation-from-graph>
+      </ng-container>
+      <ng-container *ngIf="qType === 2">
+        <app-inequalityFromGraph></app-inequalityFromGraph>
+      </ng-container>
     </ng-container>
   </p-tabPanel>
   <p-tabPanel header="Cheet Sheet">

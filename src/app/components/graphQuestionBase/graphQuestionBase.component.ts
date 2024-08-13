@@ -1,20 +1,25 @@
 import { Component } from '@angular/core'
 import {
+  ExType,
   generatePointOnTheLine,
   generateRandomLine,
   getExType,
+  getSiAsString,
   solveForY,
   XYPoint,
-} from './functions'
+} from 'src/app/functions'
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-graphQuestionBase',
+  templateUrl: './graphQuestionBase.component.html',
+  styleUrls: ['./graphQuestionBase.component.scss']
 })
-export class AppComponent {
-  title = 'slope-intercept-flashcards'
+export class GraphQuestionBaseComponent {
+
+  title =
+    'Which inequality does the following graph show the partial solution set for?'
   slopeIntercept = generateRandomLine()
+  dispFn = getSiAsString
   threePoints: {
     point1: XYPoint | undefined
     point2: XYPoint | undefined
@@ -28,7 +33,7 @@ export class AppComponent {
     high: { x: 100, y: solveForY(100, this.slopeIntercept) },
     low: { x: -100, y: solveForY(-100, this.slopeIntercept) },
   }
-  exType = getExType()
+  exType:ExType = ExType.e
   constructor() {
     this.threePoints.point1 = generatePointOnTheLine(this.slopeIntercept)
     this.threePoints.point2 = generatePointOnTheLine(
@@ -40,14 +45,5 @@ export class AppComponent {
       this.threePoints.point1,
       this.threePoints.point2,
     )
-  }
-  ready = true
-  qType = 1;
-  newQuestion() {
-    this.ready = false
-    this.qType = Math.ceil(Math.random()*2)
-    setTimeout(() => {
-      this.ready = true
-    }, 100)
   }
 }

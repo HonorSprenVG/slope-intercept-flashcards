@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import * as Highcharts from 'highcharts'
-import { ExType, getSiAsString, SlopeIntercept } from 'src/app/functions/slope-intercept';
+import { ExType, getSiAsString, SlopeIntercept } from 'src/app/functions'
 
 @Component({
   selector: 'app-CartesianGraph',
@@ -13,8 +13,8 @@ export class CartesianGraphComponent implements OnInit {
     [2, 2],
     [100, 100],
   ]
-  _si: SlopeIntercept = {m:0,b:0,rise:0,run:0};
-  _title = '';
+  _si: SlopeIntercept = { m: 0, b: 0, rise: 0, run: 0 }
+  _title = ''
   get dataset(): any {
     return this._dataset
   }
@@ -24,7 +24,13 @@ export class CartesianGraphComponent implements OnInit {
   get title(): any {
     return this._title
   }
-  @Input() set dataset(d: { p: any; a: any, si: SlopeIntercept, type:ExType, title:string }) {
+  @Input() set dataset(d: {
+    p: any
+    a: any
+    si: SlopeIntercept
+    type: ExType
+    title: string
+  }) {
     this.setDs(d.p, d.a, d.si, d.title).then((ds: any) => {
       this._dataset = ds
       this.setChartOptions(d.type)
@@ -32,8 +38,8 @@ export class CartesianGraphComponent implements OnInit {
   }
 
   setDs(p: any, a: any, si: any, title: string): Promise<any> {
-    this._title = title;
-    this._si = si;
+    this._title = title
+    this._si = si
     let ds: any = []
     return new Promise((resolve) => {
       ds.push([a.low.x, a.low.y])
@@ -83,28 +89,26 @@ export class CartesianGraphComponent implements OnInit {
     return trendline
   }
 
-  setChartOptions(type: ExType = ExType.e ) {
-
+  setChartOptions(type: ExType = ExType.e) {
     this.chartOptions = {}
     this.chartOptions = {
-      legend:{ enabled:false },
+      tooltip: { enabled: false },
+      legend: { enabled: false },
       title: {
-        text: this._title.length < 1 ?
-        getSiAsString(this._si, type) :
-        'Graph',
+        text: this._title.length < 1 ? getSiAsString(this._si, type) : 'Graph',
       },
       xAxis: {
         type: 'linear',
         tickInterval: 1,
         title: {
           text: '<span style="font-size:x-large;font-weight:1000"></span>',
-          useHTML: true
-      },
-      offset:-210,
-      labels:{
-      distance: 0,
-      step: 5
-    },
+          useHTML: true,
+        },
+        offset: -210,
+        labels: {
+          distance: 0,
+          step: 5,
+        },
         min: -10,
         max: 10,
         gridLineWidth: 0,
@@ -323,13 +327,13 @@ export class CartesianGraphComponent implements OnInit {
         title: {
           text: '<span style="font-size:x-large;font-weight:1000"></span>',
           rotation: 0,
-          useHTML: true
-      },
-      offset:-225,
-      labels:{
-        distance: 0,
-        step: 5
-      },
+          useHTML: true,
+        },
+        offset: -225,
+        labels: {
+          distance: 0,
+          step: 5,
+        },
         min: -10,
         max: 10,
         gridLineWidth: 0,
@@ -543,28 +547,44 @@ export class CartesianGraphComponent implements OnInit {
         ],
       },
       series: [
-         {
+        {
           type: 'area',
-          threshold: type === ExType.g?Infinity:
-                     type === ExType.ge?Infinity:
-                     type === ExType.l?-Infinity:
-                     type === ExType.le?-Infinity:0,
+          threshold:
+            type === ExType.g
+              ? Infinity
+              : type === ExType.ge
+              ? Infinity
+              : type === ExType.l
+              ? -Infinity
+              : type === ExType.le
+              ? -Infinity
+              : 0,
           color: type !== ExType.e ? 'green' : 'transparent',
           data: this.dataset,
-        } ,
+          marker: {
+            enabled: false,
+          },
+          states: {
+            hover: {
+              enabled:false
+            },
+          },
+          enableMouseTracking: false
+        },
         {
           type: 'line',
           name: 'Trend Line',
           data: this.getTrendLine(this.dataset),
           lineWidth: 4,
           color: '#090088',
-          dashStyle: type === ExType.l?'Dash': type===ExType.g?'Dash': 'Solid',
+          dashStyle:
+            type === ExType.l ? 'Dash' : type === ExType.g ? 'Dash' : 'Solid',
           marker: {
             enabled: false,
           },
           states: {
             hover: {
-              lineWidth: 0,
+              enabled:false
             },
           },
           enableMouseTracking: false,

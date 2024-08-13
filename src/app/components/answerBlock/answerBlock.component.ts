@@ -3,9 +3,8 @@ import {
   ExType,
   getAnswerObj,
   getAnswersSet,
-  getSiAsString,
   SlopeIntercept,
-} from 'src/app/functions/slope-intercept'
+} from 'src/app/functions'
 
 @Component({
   selector: 'app-answerBlock',

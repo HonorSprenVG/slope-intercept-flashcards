@@ -90,6 +90,13 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "repo": "https://github.com/HonorSprenVG/slope-intercept-flashcards.git",
+            "baseHref": "/slope-intercept-flashcards/"
+          }
         }
       }
     }

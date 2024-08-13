@@ -13,6 +13,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
 import { TabViewModule } from 'primeng/tabview';
 import { ButtonModule } from 'primeng/button';
+import { InequalityFromGraphComponent } from './components/inequalityFromGraph/inequalityFromGraph.component';
+import { GraphQuestionBaseComponent } from './components/graphQuestionBase/graphQuestionBase.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { ButtonModule } from 'primeng/button';
     AppComponent,
     CartesianGraphComponent,
     EquationFromGraphComponent,
-    AnswerBlockComponent
+    GraphQuestionBaseComponent,
+    AnswerBlockComponent,
+    InequalityFromGraphComponent
   ],
   imports: [
     BrowserModule,
