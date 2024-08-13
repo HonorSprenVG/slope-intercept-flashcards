@@ -25,12 +25,179 @@
     </ng-container>
   </p-tabPanel>
   <p-tabPanel header="Cheat Sheet">
-    <p>
-      Lorem ipsum odor amet, consectetuer adipiscing elit. Per placerat ornare
-      aenean ligula iaculis nibh egestas felis placerat torquent donec dapibus
-      mi blandit mollis finibus dapibus taciti auctor dolor ac posuere non nisi
-      orci velit posuere quisque condimentum phasellus tincidunt bibendum
-      placerat....
-    </p>
+    <!-- cheat-sheet sub-tabs -->
+    <p-tabView>
+      <p-tabPanel header="Graph Visual Cues">
+        <!-- GVC sub-tabs -->
+        <p-tabView>
+          <p-tabPanel header="y-intercept">
+            <div class="row">
+              <div class="chart-column">
+                <img src="assets/yInt.png" />
+              </div>
+              <div class="column" style="margin-top: 100px">
+                <p>
+                  If you can see where a line crosses the y-axis,
+                  <br />
+                  that is the y-intercept. In this image, the line
+                  <br />
+                  crosses the y-axis at (0,-2).
+                  <br />
+                  The y-intercept, then, is "-2".
+                  <br /><br />
+                  Mathmatically, you can also think of it like this:
+                  <br />
+                  "if x=0, what is y".
+                  <br />
+                  The answer is your y-intercept.
+                  <br />
+                  See the Quick Maths tab -> Finding the y-intercept for more.
+                </p>
+              </div>
+            </div>
+          </p-tabPanel>
+          <p-tabPanel header="Slope (+ or -)">
+            <p-tabView>
+              <p-tabPanel header="Positive Slope">
+                <div class="row">
+                  <div class="chart-column">
+                    <img src="assets/posSlope.png" />
+                  </div>
+                  <div class="column" style="margin-top: 100px">
+                    Think about a line as if it always "moves to the right."
+                    <br />
+                    if it is pointing in an "upward" direction, the slope is
+                    positive.
+                    <br />
+                    In this example we can easily see the "rise" and "run" of
+                    the line.
+                    <br />
+                    As it "rises" one unit, it will "run" 3 units.
+                    <br />
+                    The slope, then, is 1/3. Positive.
+                  </div>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel header="Negative Slope">
+                <div class="row">
+                  <div class="chart-column">
+                    <img src="assets/negSlope.png" />
+                  </div>
+                  <div class="column" style="margin-top: 100px">
+                    Think about a line as if it always "moves to the right."
+                    <br />
+                    if it is pointing in an "downward" direction, the slope is
+                    negative.
+                    <br />
+                    In this example we can easily see the "rise" and "run" of
+                    the line.
+                    <br />
+                    As it "rises" NEGATIVE one unit, it will "run" 2 units.
+                    <br />
+                    The slope, then, is -1/2. Negative.
+                  </div>
+                </div>
+              </p-tabPanel>
+            </p-tabView>
+          </p-tabPanel>
+          <p-tabPanel header="Slope-at-a-glance">
+            <div class="row">
+              <div class="chart-column">
+                <img src="assets/approxSlopeAtAGlance.png" />
+              </div>
+              <div class="column" >
+                There's a lot going on here... stay with me.
+                <br /><br/>
+                1. A "flat" line has a slope of 0. It never "rises", so it's
+                <br/>
+                "rise/run" might look something like "0/5".
+                <br /><br/>
+                2. A "vertical" line has an undefined slope. It never "runs",
+                <br/>
+                so it's "rise/run" might look something like "3/0" (divide by
+                <br/>
+                zero error).
+                <br /><br/>
+                3. A line at a 45 degree angle has a slope of plus-or-minus 1.
+                <br/>
+                Remember: "pointing down" is negative, "pointing up" is
+                <br/>
+                positive.
+                <br /><br/>
+                4. A line that is closer to "flat" than 45 degrees, will have
+                <br/>
+                a slope smaller than 1. REMEMBER: "pointing down" is negative,
+                <br/>
+                "pointing up" is positive.
+                <br /><br/>
+                5. A line that is closer to "vertical" than 45 degrees will
+                <br/>
+                have a slope bigger than 1. REMEMBER: "POINTING DOWN" IS
+                <br/>
+                NEGATIVE, "POINTING UP" IS POSITIVE.
+              </div>
+            </div>
+          </p-tabPanel>
+        </p-tabView>
+        <!-- end GVC sub-tabs -->
+      </p-tabPanel>
+      <!-- end cheat-sheet sub-tabs -->
+      <p-tabPanel header="Quick Maths">
+        <p-tabView>
+          <p-tabPanel header="Finding the slope(m)">
+            <img src="assets/findTheSlope.png" />
+            <span style="font-weight:bold">Remember:</span> slope(m) = rise/run
+            <br/>
+            rise = "change in y" <span style="font-weight:bold">-or-</span> rise = y2-y1
+            <br/>
+            run = "change in x" <span style="font-weight:bold">-or-</span> run = x2-x1
+            <br/>
+            m= (y2-y1) / (x2-x1)
+            <br/><br/>
+            In the example above, we chose (-8,6) as our first point and (-6,5) as our second point.
+            <br/>
+            m= ((5)-(6)) / ((-6)-(-8))
+            <br/>
+            m= (-1) / (2)
+            <br/>
+            m = -1/2
+          </p-tabPanel>
+          <p-tabPanel header="Finding the y-intercept(b)">
+            <img src="assets/oneOverNegativeTwoTable.png" />
+            <br/>
+            If you know the slope(m), in this case it would be a "rise" of 1 over a "run" of -2 (-1/2):
+            <br/>
+            You can plug any point into your slope-intercept formula (y = mx + b) to find b, which is your y-intercept.
+            <br/>
+            Let's use (-6,5). When we solve for b we can insert y=5 and x=-6, because we know it's a point on our line.
+            <br/><br/>
+            <span style="font-weight:bold">So:</span> 5=-1/2*-6 + b
+            <br/>
+            <span style="font-weight:bold">Solve for b:</span>
+            <br/>
+            Simplifiy the right side [-1/2 * -6 = 3]
+            <br/>
+            <span style="font-weight:bold">which gives us:</span>  5 = 3 + b
+            <br/>
+            Minus 3 from both sides to isolate b like: ((5)-3) = ((3+b) - 3)
+            <br/>
+            <span style="font-weight:bold">Which gives us:</span> 2 = b
+            <br/><br/>
+            Excellent! our y-intercept is 2.
+            <br/>
+            The table above already gave us a point where x=0, so we can check our solution against it.
+          </p-tabPanel>
+        </p-tabView>
+      </p-tabPanel>
+    </p-tabView>
   </p-tabPanel>
 </p-tabView>
+
+
+<!--
+<p-tabView>
+  <p-tabPanel header="Flash Cards">
+
+  </p-tabPanel>
+</p-tabView>
+-->
