@@ -15,6 +15,9 @@ import { TabViewModule } from 'primeng/tabview';
 import { ButtonModule } from 'primeng/button';
 import { InequalityFromGraphComponent } from './components/inequalityFromGraph/inequalityFromGraph.component';
 import { GraphQuestionBaseComponent } from './components/graphQuestionBase/graphQuestionBase.component';
+import { TableModule } from 'primeng/table';
+import { TableOfPointsComponent } from './components/tableOfPoints/tableOfPoints.component';
+import { EquationFromTableComponent } from './components/equation-from-table/equation-from-table.component';
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import { GraphQuestionBaseComponent } from './components/graphQuestionBase/graph
     EquationFromGraphComponent,
     GraphQuestionBaseComponent,
     AnswerBlockComponent,
-    InequalityFromGraphComponent
+    InequalityFromGraphComponent,
+    TableOfPointsComponent,
+    EquationFromTableComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,8 @@ import { GraphQuestionBaseComponent } from './components/graphQuestionBase/graph
     RadioButtonModule,
     FormsModule,
     TabViewModule,
-    ButtonModule
+    ButtonModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

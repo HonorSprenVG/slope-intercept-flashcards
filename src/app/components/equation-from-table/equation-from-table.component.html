@@ -1,0 +1,11 @@
+<div>{{title}}</div>
+<app-tableOfPoints [threePoints]="threePoints"></app-tableOfPoints>
+<p>{{question}}</p>
+
+
+
+
+    <app-answerBlock
+      [si]="{ si: slopeIntercept, t: exType, dispFn: dispFn }"
+    ></app-answerBlock>
+

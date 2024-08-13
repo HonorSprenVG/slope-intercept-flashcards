@@ -45,7 +45,7 @@ export class AppComponent {
   qType = 1;
   newQuestion() {
     this.ready = false
-    this.qType = Math.ceil(Math.random()*2)
+    this.qType = Math.ceil(Math.random()*3)
     setTimeout(() => {
       this.ready = true
     }, 100)

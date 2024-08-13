@@ -7,6 +7,8 @@
   {{threePoints.point3 | json}}
 </pre>
 <app-CartesianGraph [dataset]="{p:threePoints,a:chartAnchors,si:slopeIntercept,type:exType,title:''}"></app-CartesianGraph> -->
+<!-- <app-tableOfPoints [threePoints]="threePoints"></app-tableOfPoints> -->
+<!-- <app-equation-from-table></app-equation-from-table> -->
 <p-tabView>
   <p-tabPanel header="Question">
     <p-button label="New Question" (onClick)="newQuestion()" />
@@ -17,12 +19,18 @@
       <ng-container *ngIf="qType === 2">
         <app-inequalityFromGraph></app-inequalityFromGraph>
       </ng-container>
+      <ng-container *ngIf="qType === 3">
+        <app-equation-from-table></app-equation-from-table>
+      </ng-container>
     </ng-container>
   </p-tabPanel>
   <p-tabPanel header="Cheat Sheet">
     <p>
-      Lorem ipsum odor amet, consectetuer adipiscing elit. Per placerat ornare aenean ligula iaculis nibh egestas felis placerat torquent donec dapibus mi blandit mollis finibus dapibus taciti auctor dolor ac posuere non nisi orci velit posuere quisque condimentum phasellus tincidunt bibendum placerat....
+      Lorem ipsum odor amet, consectetuer adipiscing elit. Per placerat ornare
+      aenean ligula iaculis nibh egestas felis placerat torquent donec dapibus
+      mi blandit mollis finibus dapibus taciti auctor dolor ac posuere non nisi
+      orci velit posuere quisque condimentum phasellus tincidunt bibendum
+      placerat....
     </p>
   </p-tabPanel>
-
 </p-tabView>

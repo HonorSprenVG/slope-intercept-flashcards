@@ -117,7 +117,6 @@ export function getAnswersSet(v: {
 
   shuffle(answers)
   let trimToLen = Math.abs(randNegNToN(3) + getSign())
-  console.log('where are my bad inequalities? ', v, v.t != ExType.e, trimToLen)
   if (v.t != ExType.e) {
     answers = trimAnswers(answers, trimToLen)
     //bad ineq

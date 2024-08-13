@@ -1,13 +1,12 @@
-import { randNegNToN, SlopeIntercept, solveForY, XYPoint } from "./"
+import { randNegNToN, SlopeIntercept, solveForY, XYPoint } from './'
 
 export function generatePointOnTheLine(
   si: SlopeIntercept,
   check1?: XYPoint | undefined,
   check2?: XYPoint | undefined,
 ) {
-  let point: XYPoint = { x: 0, y: 0 }
-  point.x = randNegNToN(5)
-  point.y = solveForY(point.x, si)
+  let point = getAPoint(si)
+
   if (check1 && check2) {
     if (
       (point.x === check1.x && point.y === check1.y) ||
@@ -22,5 +21,18 @@ export function generatePointOnTheLine(
       }
     }
   }
+
+  return point
+}
+
+function getAPoint(si: SlopeIntercept) {
+  let point: XYPoint = { x: 0, y: 0 }
+
+  point.x = randNegNToN(10)
+  point.y = solveForY(point.x, si)
+  if (!Number.isInteger(point.y)) {
+    point = getAPoint(si)
+  }
+
   return point
 }
