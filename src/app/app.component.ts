@@ -42,10 +42,14 @@ export class AppComponent {
     )
   }
   ready = true
-  qType = 1;
+  getNewQtype(): number {
+    this.qType = Math.ceil(Math.random() * 3)
+    return this.qType
+  }
+  qType: number = this.getNewQtype()
   newQuestion() {
     this.ready = false
-    this.qType = Math.ceil(Math.random()*3)
+    this.qType = this.getNewQtype()
     setTimeout(() => {
       this.ready = true
     }, 100)
