@@ -12,20 +12,11 @@ jobs:
 # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      # Caches NPM and the node_modules folder for faster builds
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: publish
-        run: |
-          npm ci
-          ng deploy
+      - uses: actions/checkout@v2
+    - name: Building and Deploying...
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1
+      with:
+        build_configuration: production
+        base_href: /slope-intercept-flashcards/
+        deploy_branch: gh-pages
+        angular_dist_build_folder: dist/slope-intercept-flashcards
